@@ -10,4 +10,4 @@ interface Example {
 
 type StringProps = Props<Example, string>; // 'str'
 type NumberProps = Props<Example, number>; // 'num'
-type BooleanProps = Props<Example, boolean>; // 'boo
+type BooleanProps = Props<Example, boolean>; // 'boo'
