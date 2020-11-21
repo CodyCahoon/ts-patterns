@@ -16,25 +16,25 @@ class Bucket {
 }
 
 class OpenError extends Error {
-  public name = "CircuitOpenError";
-  constructor(message = "Circuit is open, unable to process") {
+  public name = 'CircuitOpenError';
+  constructor(message = 'Circuit is open, unable to process') {
     super(message);
   }
 }
 
 class TimeoutError extends Error {
-  public name = "CircuitTimeoutError";
-  constructor(message = "Circuit is , unable to process") {
+  public name = 'CircuitTimeoutError';
+  constructor(message = 'Circuit is , unable to process') {
     super(message);
   }
 }
 
-type Default<T> = T | "default";
+type Default<T> = T | 'default';
 
 class Config {
-  timeout: Default<number> = "default";
-  windowDuration: Default<number> = "default";
-  bucketCount: Default<number> = "default";
+  timeout: Default<number> = 'default';
+  windowDuration: Default<number> = 'default';
+  bucketCount: Default<number> = 'default';
 }
 
 export class CircuitBreaker {
@@ -75,6 +75,6 @@ export class CircuitBreaker {
   }
 
   private setValue<K>(value: Default<K>, defaultValue: K): K {
-    return value === "default" ? defaultValue : value;
+    return value === 'default' ? defaultValue : value;
   }
 }
