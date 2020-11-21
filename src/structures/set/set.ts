@@ -1,27 +1,27 @@
 import { Primitive } from './../../types/primitive';
 
-export function symmetricDifference<T extends Primitive>(
-  a: Set<T>,
-  b: Set<T>
-): Set<T> {
+type P = Primitive;
+
+export function symmetricDifference(a: Set<P>, b: Set<P>): Set<P> {
   return union(difference(a, b), difference(b, a));
 }
 
-export function difference<T extends Primitive>(a: Set<T>, b: Set<T>): Set<T> {
+export function difference(a: Set<P>, b: Set<P>): Set<P> {
   return new Set([...a].filter((val) => !b.has(val)));
 }
 
-export function intersection<T extends Primitive>(
-  a: Set<T>,
-  b: Set<T>
-): Set<T> {
-  return new Set<T>([...a].filter((aVal) => b.has(aVal)));
+export function intersection(a: Set<P>, b: Set<P>): Set<P> {
+  return new Set([...a].filter((aVal) => b.has(aVal)));
 }
 
-export function union<T extends Primitive>(a: Set<T>, b: Set<T>): Set<T> {
-  return new Set<T>([...a, ...b]);
+export function union(a: Set<P>, b: Set<P>): Set<P> {
+  return new Set([...a, ...b]);
 }
 
-export function subset<T extends Primitive>(a: Set<T>, b: Set<T>): boolean {
+export function subset(a: Set<P>, b: Set<P>): boolean {
   return intersection(a, b).size === b.size;
+}
+
+export function empty(a: Set<P>): boolean {
+  return a.size === 0;
 }
