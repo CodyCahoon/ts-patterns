@@ -1,4 +1,4 @@
-import { difference, intersection, union } from './set';
+import { difference, intersection, subset, union } from './set';
 
 describe('Set', () => {
   describe('difference', () => {
@@ -36,6 +36,26 @@ describe('Set', () => {
       const a = new Set(['a', 'b', 'c']);
       const b = new Set(['b', 'c', 'd']);
       expect(union(a, b)).toEqual(new Set(['a', 'b', 'c', 'd']));
+    });
+  });
+
+  describe('subset', () => {
+    it('should return false when any value is not present', () => {
+      const a = new Set(['a', 'b', 'c']);
+      const b = new Set(['d']);
+      expect(subset(a, b)).toBe(false);
+    });
+
+    it('should return true when a value is present', () => {
+      const a = new Set(['a', 'b', 'c']);
+      const b = new Set(['b']);
+      expect(subset(a, b)).toBe(true);
+    });
+
+    it('should return false with extra values', () => {
+      const a = new Set(['a', 'b', 'c']);
+      const b = new Set(['b', 'd']);
+      expect(subset(a, b)).toBe(false);
     });
   });
 });
