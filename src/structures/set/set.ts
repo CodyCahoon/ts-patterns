@@ -2,12 +2,7 @@ import { Primitive } from './../../types/primitive';
 
 export function difference<T extends Primitive>(a: Set<T>, b: Set<T>): Set<T> {
   const intersect = intersection(a, b);
-  return [...a.values(), ...b.values()].reduce((diff: Set<T>, val: T) => {
-    if (intersect.has(val)) {
-      return diff;
-    }
-    return new Set([...diff, val]);
-  }, new Set<T>());
+  return new Set([...a, ...b].filter((val) => !intersect.has(val)));
 }
 
 export function intersection<T extends Primitive>(
