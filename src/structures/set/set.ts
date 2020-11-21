@@ -1,8 +1,14 @@
 import { Primitive } from './../../types/primitive';
 
+export function symmetricDifference<T extends Primitive>(
+  a: Set<T>,
+  b: Set<T>
+): Set<T> {
+  return union(difference(a, b), difference(b, a));
+}
+
 export function difference<T extends Primitive>(a: Set<T>, b: Set<T>): Set<T> {
-  const intersect = intersection(a, b);
-  return new Set([...a, ...b].filter((val) => !intersect.has(val)));
+  return new Set([...a].filter((val) => !b.has(val)));
 }
 
 export function intersection<T extends Primitive>(

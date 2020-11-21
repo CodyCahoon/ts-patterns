@@ -1,4 +1,10 @@
-import { difference, intersection, subset, union } from './set';
+import {
+  difference,
+  symmetricDifference,
+  intersection,
+  subset,
+  union,
+} from './set';
 
 describe('Set', () => {
   describe('difference', () => {
@@ -9,10 +15,25 @@ describe('Set', () => {
 
     it('should return a valid set when passing the different sets', () => {
       const a = new Set(['a', 'b', 'c']);
-      const b = new Set(['b', 'c']);
+      const b = new Set(['b', 'c', 'd']);
 
       expect(difference(a, b)).toEqual(new Set('a'));
-      expect(difference(b, a)).toEqual(new Set('a'));
+      expect(difference(b, a)).toEqual(new Set('d'));
+    });
+  });
+
+  describe('symmetricDifference', () => {
+    it('should return an empty set when passing the equal sets', () => {
+      const a = new Set(['a', 'b', 'c']);
+      expect(symmetricDifference(a, a)).toEqual(new Set());
+    });
+
+    it('should return a valid set when passing the different sets', () => {
+      const a = new Set(['a', 'b', 'c']);
+      const b = new Set(['b', 'c']);
+
+      expect(symmetricDifference(a, b)).toEqual(new Set('a'));
+      expect(symmetricDifference(b, a)).toEqual(new Set('a'));
     });
   });
 
