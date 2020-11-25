@@ -1,10 +1,4 @@
-import {
-  difference,
-  symmetricDifference,
-  intersection,
-  subset,
-  union,
-} from './set';
+import { difference, symmetricDifference, intersection, subset, union } from './set';
 
 describe('Set', () => {
   describe('difference', () => {

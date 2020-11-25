@@ -7,12 +7,7 @@ enum State {
 }
 
 class Bucket {
-  constructor(
-    public success = 0,
-    public error = 0,
-    public timeout = 0,
-    public shortCircuit = 0
-  ) {}
+  constructor(public success = 0, public error = 0, public timeout = 0, public shortCircuit = 0) {}
 }
 
 class OpenError extends Error {

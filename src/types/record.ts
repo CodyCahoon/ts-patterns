@@ -4,7 +4,6 @@ export type Getters<T extends object> = {
     readonly [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K]
 };
 
-// g -> s
 export type Setters<T extends object> = {
     readonly [K in keyof T as `set${Capitalize<string & K>}`]: (prop: T[K]) => void
 };
